@@ -1,0 +1,7 @@
+OVERVIEW
+
+PREPARATION GUIDE
+
+Some companies use the same interview process for Front End Engineers as they do for generalist Software Engineers, while some companies do a mix - general software engineering rounds mixed with front end domain specific rounds.
+
+Industry gradually shifting away from asking front end candidates heavy DSA questions.
