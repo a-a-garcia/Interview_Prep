@@ -1,0 +1,12 @@
+#1 Describe the difference between `<script>`, `<script async>` and `<script defer>`.
+
+1st BLIND ANSWER : 
+
+The <script> tag is an HTML tag that denotes the presence of a javascript file, to be loaded when the DOM is loaded. Plain <script> means the JS will execute whenever it 
+is encountered in the head, which usually means immediately. <script async> means the JS will execute asynchronously. (?) and <script defer> means the JS will load after everything else in the page has loaded.
+
+CORRECT ANSWER:
+
+`<script>` tags are used to include JavaScript on a web page. The `async` and `defer` attributes are used to change how/when the loading and execution of the script happens.
+
+Plain `<script>` - when encountered, HTML parsing is blocked
