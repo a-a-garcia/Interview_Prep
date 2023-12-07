@@ -9,7 +9,7 @@ created: 1701811639538
 
 **1ST Blind Answer:** The box model refers to the layout by which all visible elements on a web page are defined. It consists of each element's padding, margin, and actual content size. You can tell the browser in CSS to render your layout in different box models by changing the box-sizing property of all elements on a page. Most commonly, you can set it to border-box to ensure that all eleemnts start with no default margin or padding.
 
-**CORRECT ANSWER**: The CSS Box model describes the rectangular boxes that are generated for elements in the document tree, and laid out according to the visual formatting model. Each b ox has a content area (e.g. text, an image, etc.) and optional surrounding `padding`, `border`, and `margin`.
+**CORRECT ANSWER**: The CSS Box model describes the rectangular boxes that are generated for elements in the document tree, and laid out according to the visual formatting model. Each box has a content area (e.g. text, an image, etc.) and optional surrounding `padding`, `border`, and `margin`.
 
 The CSS box model is responsible for calculating:
 * How much space a block element takes up.
