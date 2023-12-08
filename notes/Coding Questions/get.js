@@ -73,7 +73,8 @@ const get = (objectParam, pathParam, defaultValue) => {
   //2nd iteration: object = john[`firstName`]
 
   // if index && index===length is true, result becomes object, else undefined
-  const result = index && index === length ? object : undefined;
+ // ie - index is not 0 and is equal to length. if it did, then that means the entire path was traversed and the result is the object. otherwise, the result is undefined.
+  const result = (index && index === length) ? object : undefined;
 
   // is the result not equal to undefined? if so, return the result, otherwise, return defaultValue
   return result !== undefined ? result : defaultValue;
