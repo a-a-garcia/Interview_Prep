@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .static-box {
+      position: static; /* Default position */
+      width: 200px;
+      height: 100px;
+      background-color: lightgreen;
+      border: 2px solid green;
+      margin: 20px; /* Just to provide some spacing */
+    }
+
+    .other-box {
+      width: 150px;
+      height: 75px;
+      background-color: lightblue;
+      border: 2px solid blue;
+      margin: 20px; /* Just to provide some spacing */
+    }
+
+    .relative-box {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      background-color: lightcoral;
+      border: 2px solid red;
+      margin: 20px; /* Just to provide some spacing */
+    }
+
+    .offset-box {
+      position: relative;
+      top: 20px;
+      left: 30px;
+      width: 150px;
+      height: 75px;
+      background-color: lightblue;
+      border: 2px solid blue;
+      margin: 20px; /* Just to provide some spacing */
+    }
+
+    .relative-container {
+      position: relative; /* Needed for the absolute positioning to be relative to this container */
+      width: 300px;
+      height: 200px;
+      background-color: lightgray;
+      margin: 20px; /* Just to provide some spacing */
+    }
+
+    .absolute-box {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      width: 150px;
+      height: 75px;
+      background-color: lightcoral;
+      border: 2px solid red;
+    }
+
+    .fixed-box {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 150px;
+      height: 75px;
+      background-color: lightgreen;
+      border: 2px solid green;
+      z-index: 999; /* To make sure it appears above other elements */
+    }
+
+    .content {
+      margin-top: 150px; /* Creating some space at the top for demonstration */
+    }
+
+    .sticky-box {
+      position: sticky;
+      top: 20px; /* The threshold where it becomes fixed */
+      width: 150px;
+      height: 75px;
+      background-color: lightcoral;
+      border: 2px solid red;
+      margin-bottom: 20px; /* Just to provide some spacing at the bottom */
+    }
+
+    .sticky-content {
+      height: 400px; /* Creating enough content for scrolling */
+    }
+  </style>
+</head>
+<body>
+  <p>The first div has a class of .static-box with position: static. It will flow into the page as it normally would, and you can't use top, bottom, left, or right to reposition it.
+
+    The second div (.other-box) doesn't have a specific position set, so it also behaves as if it has position: static by default.
+    
+    Both boxes will be displayed one after the other in the normal flow of the document, and their positions won't be affected by any attempts to use positioning properties. The margin is there just for spacing between the boxes.</p>
+  <div class="static-box">
+    <p>This is a box with position: static.</p>
+  </div>
+
+  <div class="other-box">
+    <p>This is another box without specifying position.</p>
+  </div>
+---
+
+  <p>The third div has a class of .relative-box with position: relative. This doesn't change its position initially; it's just there in its normal flow.
+
+    The fourth div (.offset-box) also has position: relative, but it also has top: 20px and left: 30px. This means it will be moved 20 pixels down and 30 pixels to the right relative to its normal position in the document flow.
+    
+    Both boxes still occupy space in the layout, and the second box's movement doesn't affect the position of other elements. It essentially leaves a "gap" where it would have been if it hadn't been repositioned. </p>
+
+  <div class="relative-box">
+    <p>This is a box with position: relative.</p>
+  </div>
+
+  <div class="offset-box">
+    <p>This is another box with position: relative and an offset.</p>
+  </div>
+
+---
+
+<p>The .relative-container has position: relative. This is important because the absolutely positioned element (.absolute-box) will be positioned relative to its closest positioned ancestor.
+
+    The .absolute-box has position: absolute, top: 50px, and left: 50px. This means it will be positioned 50 pixels down and 50 pixels to the right from the top-left corner of its closest positioned ancestor (which is the .relative-container in this case).
+    
+    The absolutely positioned box is taken out of the normal flow, and its position is determined independently of the other elements. It essentially "floats" above the normal document flow.</p>
+
+  <div class="relative-container">
+    <p>This is a relative container.</p>
+    <div class="absolute-box">
+      <p>This is an absolutely positioned box inside the relative container.</p>
+    </div>
+  </div>
+
+---
+
+<p>The .fixed-box has position: fixed, top: 20px, and left: 20px. This means it will be positioned 20 pixels down and 20 pixels to the right from the top-left corner of the viewport.
+
+    The .content div has some margin at the top to create space for scrolling.
+    
+    When you scroll down the page, you'll notice that the fixed box remains in the same position relative to the viewport and doesn't move with the content. It's a common technique used for things like navigation bars that you want to stay visible even as users scroll through a page.</p>
+
+  <!-- <div class="fixed-box">
+    <p>This is a fixed box. It stays in the same position even when you scroll.</p>
+  </div> -->
+
+  <div class="content">
+    <p>This is some content. Scroll down to see the fixed box stay in place.</p>
+    <!-- Add more content to make scrolling noticeable -->
+  </div>
+
+  ---
+  <p>
+    The .sticky-box has position: sticky and top: 20px. This means that the box will act as a relative positioned element until it crosses a threshold of 20 pixels from the top of the viewport. Once it crosses this threshold during scrolling, it becomes fixed and stays fixed at that position.
+
+    There is enough content in the .content div to allow scrolling.
+
+    As you scroll down the page, you'll see the sticky box move with the scrolling until it reaches the specified threshold (top: 20px), at which point it becomes fixed and stays in that position even as you continue scrolling. It's a common use case for sticky headers or sidebars on websites.
+  </p>
+
+  <div class="sticky-content">
+    <p>This is some content. Scroll down to see the sticky box in action.</p>
+  </div>
+
+  <div class="sticky-box">
+    <p>This is a sticky box. It becomes fixed after scrolling past a certain point.</p>
+  </div>
+
+  <div class="sticky-content">
+    <p>This is more content.</p>
+  </div>
+</body>
+</html>
+
+
+
+

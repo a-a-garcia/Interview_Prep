@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="box purple"></div>
+        <div class="box yellow"></div>
+        <div class="box red"></div>
+    </div>
+    <div class="box orange"></div>
+</body>
+
+<style>
+    body {
+        height: 200vh;
+    }
+
+    .container {
+        width: 550px;
+        border: 2px solid black;
+        margin: 50px auto;
+        position: relative;
+    }
+
+    .box {
+        width: 150px;
+        height: 150px;
+    }
+
+    .purple {
+        background-color: purple;
+        position: relative;
+        left: 50px;
+        top: 20px;
+    }
+/* you cannot apply top/left/bottom/right to static elements. */
+
+    /* using 'left' technically moves the box to the right. the property moves it x amount of pixels from its reference direction */
+
+    .yellow {
+        background-color: yellow;
+        position: absolute;
+        right: 5px;
+    }
+
+    /* it will be positioned right 5px to the entire document, not the container. you have to set position: relative on it's parent, the container to put the yellow box in the container. Again, this is because absolute removes it from the normal document flow*/
+
+    /* can overlap other elements. z-index becomes useful to change overlaps*/
+
+    .red {
+        background-color: red;
+        position: fixed;
+        bottom: 10px;
+    }
+
+    /* The red box seems to disappear if you do position: absolute on the yellow box!  It's actually still there, but yellow is taken out of the normal document flow and placed on top of red*/
+
+    /* position:fixed will always stay in the same place regardless of scroll - taken out of the normal document flow. */
+
+    /* does not care about any parent. it's parent automatically becomes body element */
+
+    .orange {
+        background-color: orange;
+        position: sticky;
+        top: 0;
+    }
+
+    /* sticky doesn't break the normal document flow. */
+
+    /* it will behave like a static position element until the box reaches top: 0 or the top of the body. then it will behave like a fixed element. */
+
+</style>
+</html>

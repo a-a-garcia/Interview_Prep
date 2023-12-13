@@ -1,0 +1,69 @@
+body {
+    font-family: sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    min-height: 100vh;
+  }
+  
+  #root {
+    display: flex; 
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* the above 3 rules are crucial to making the solution work */
+  /* without display:flex, the content of the columns will not fill the page  */
+  /* without flex-direction column, all of the content will be laid out horizontally, next to each other */
+  /* without min-height 100vh, the content of all the columns will not fill the page. footer will not stick to the bottom when there isn't enough content to fill page */
+  * {
+    box-sizing: border-box;
+  }
+  
+  header,
+  nav,
+  main,
+  aside,
+  footer {
+    padding: 12px;
+    text-align: center;
+  }
+  
+  header {
+    background-color: tomato;
+    height: 60px;
+  }
+  
+  .columns {
+    display: flex;
+    flex-grow: 1;
+  }
+  /* without flex-grow, the columns will not fill up available space on the page. */
+  /* without flex, columns will not be aligned properly nor will they be equal height */
+  nav {
+    background-color: coral;
+    flex-shrink: 0;
+    width: 100px;
+  }
+  /* flex-shrink: 0 has to be added to <nav> and <aside> so that they don't shrink when the content in <main> is too wide. */
+
+  main {
+    background-color: moccasin;
+    flex-grow: 1;
+  }
+  /* without flex-grow: 1 here, the columns will be squished to the leftmost side. This makes it so the main can have flexible width and it will fill up any horizontal space available. */
+
+
+  aside {
+    background-color: sandybrown;
+    flex-shrink: 0;
+    width: 100px;
+  }
+
+  /* flex-shrink: 0 has to be added to <nav> and <aside> so that they don't shrink when the content in <main> is too wide. */
+  
+  footer {
+    background-color: slategray;
+    height: 100px;
+  }
+  
