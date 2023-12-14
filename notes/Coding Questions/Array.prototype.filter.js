@@ -31,7 +31,7 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
             //kValue - current value of the array element at index k.
             //k - index
             //this - the array itself.
-            
+
         ) {
             results.push(kValue)
         }
@@ -89,3 +89,27 @@ Array.prototype.myFilter = function (callbackFn, thisArg) {
 // If existing elements of the array are changed, their value as passed to the callback will be the value at the time filter visits them.
 // Elements that are deleted after the call to filter begins and before being visited are not visited.
 // The thisArg doesn't do anything if the callback is defined as an arrow function as arrow functions don't have their own bindings to this.
+
+
+// No, the order in which the arguments are passed to callbackFn.call does not need to match the order you've listed in your comment. The order in which the arguments are passed to call should match the expected parameter order of the callbackFn function.
+
+// In the callbackFn.call(thisArg, kValue, k, this) line:
+
+// thisArg: The first argument is the value that will be set as the this value inside the callbackFn. In this case, it's the array itself (this).
+
+// kValue: The second argument is the current value of the array element at index k.
+
+// k: The third argument is the index k.
+
+// this: The fourth argument is the array itself.
+
+// The order is determined by the way call works. The first argument to call becomes the this value inside the function, and subsequent arguments are passed as parameters to the function.
+
+// So, if your callbackFn function is defined like this:
+
+// javascript
+// Copy code
+// function callbackFn(value, index, array) {
+//   // ...
+// }
+// Then, when calling callbackFn.call(thisArg, kValue, k, this), it correctly matches the order of parameters expected by callbackFn. The arguments are passed to callbackFn in the order of value, index, and array.
