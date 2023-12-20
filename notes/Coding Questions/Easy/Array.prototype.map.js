@@ -9,7 +9,7 @@ Array.prototype.myMap = function (callbackFn, thisArg) {
     const length = this.length;
   
     // Create a new array to store the mapped values
-    const array = new Array(length);
+    const array = []
   
     // Iterate over each element of the array
     for (let i = 0; i < length; i++) {

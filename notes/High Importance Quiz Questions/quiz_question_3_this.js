@@ -151,3 +151,33 @@ regularInstance();
 
 //The arrow function inside `arrowFunction` captures the `this` value from its surrounding scope (`arrowFunction`), so `this.arrowVar` will be defined.
 arrowInstance();
+
+//Another example of regular function vs arrow function - `this` context difference
+
+// Regular function in an object
+const obj = {
+    name: "Example Object",
+    handleClick: function() {
+      console.log(`Clicked in ${this.name}`);
+    }
+  };
+  
+  // Attach event listener using a regular function
+  document.getElementById("button").addEventListener("click", obj.handleClick); // This would result in an error
+  
+  // Now let's use an arrow function to preserve the value of 'this'
+  const objWithArrowFunction = {
+    name: "Object with Arrow Function",
+    handleClick: function() {
+      document.getElementById("button").addEventListener("click", () => {
+        console.log(`Clicked in ${this.name}`);
+      });
+    }
+  };
+  
+  // Now calling objWithArrowFunction.handleClick() will correctly log the message without errors
+
+//   In this example, if you use a regular function for the event listener in the first case (obj.handleClick), `this` would refer to the element that triggered the event (the button), and accessing this.name would result in an error. However, by using an arrow function inside the method handleClick in the second case (objWithArrowFunction.handleClick), the arrow function inherits the value of this from the surrounding scope (objWithArrowFunction), allowing you to correctly access this.name.
+
+//     This pattern is especially common in React or other frameworks where you might define methods in a class and want to use them as event handlers without worrying about the context of this. Arrow functions simplify such scenarios and help avoid common pitfalls related to this in JavaScript.
+

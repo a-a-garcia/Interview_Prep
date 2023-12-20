@@ -2,7 +2,7 @@
 id: 3waybmqezjnv9bybomcun0k
 title: Mock Interview 1
 desc: ''
-updated: 1702607611602
+updated: 1703020274899
 created: 1702519023163
 ---
 Introduce myself, focusing on the development side, and end with saying why I want to work there.
@@ -169,22 +169,84 @@ ___
 
 1. `src`, Source: specifies the URL or file path of the image.
 2. `alt`, Alternative Text: provides alternative text thats displayed if the image can't be loaded OR for accessibility purposes. It's essential for screen readers. **If the image is decorative, use an empty or null value.** This conveys to screen readers the image doesn't convey important info and prevents unnecessary verbosity.
-3. (optional) `width` and `height`: can help reserver space for the image before it loads to help prevent layout shifts.
+3. (optional) `width` and `height`: can help reserve space for the image before it loads to help prevent layout shifts.
 
 ___
 
 
 
-Have I used Tailwind? What do I like about it? (The job info mentioned it specifically as an advantage)
+**Have I used Tailwind? What do I like about it? (The job info mentioned it specifically as an advantage)**
 
-What is the difference between var, let and const?
+* Yes, I have hands-on experience with Tailwind. I appreciate that it's a utility-first CSS framework meaning it's highly customizable. 
+  * The utility classes can be customized to fit the specific design needs of a project. The base classes provided by Tailwind are plenty and are easily extended or overwritten.
+  * Responsive design is simplified via classes for different screen sizes.
+  * Can reduce reliance on JS for some interactivity.
 
-What is the difference between a regular and an arrow function?
 
-What is the difference between null and undefined?
+___
 
-What JS frameworks am I familiar with?
+**What is the difference between var, let and const?**
 
-What are IIFE? Why might we use them?
+* var is function-scoped, allowing it to be used anywhere within the function it's defined. On the other hand, let and const are block-scoped, confined to the nearest set of curly braces.
+
+* var allows reassignment using the same variable name without throwing an error. In contrast, let and const do not allow redeclaration within the same scope.
+
+* It's generally recommended to use let for variables that might be reassigned and const for constants that shouldn't be reassigned. The use of var is discouraged due to its broader scope, which can lead to unintended errors in more complex code."
+
+___
+
+**What is the difference between a regular and an arrow function?**
+
+Arrow functions, introduced in ES6, provide a more concise syntax for writing functions. One significant distinction between regular functions and arrow functions is how they handle the `this` keyword.
+
+Arrow functions do not create their own `this` context; instead, they inherit the value of `this` from their surrounding scope. This behavior makes arrow functions particularly useful in situations where you want to maintain the context of `this` from the enclosing function or object.
+
+On the other hand, regular functions create their own `this` context, which can lead to different behavior, especially when used within certain callbacks or event handlers.
+
+
+___
+
+**What is the difference between null and undefined?**
+
+null is a value that developers can assign to a variable to signify the intentional absence of a value. It's important to check for null using the strict equality operator (===), as using the loose equality operator (==) can lead to unexpected results, such as false positives in comparisons with undefined.
+
+On the other hand, undefined signifies that a variable has been declared but has not been assigned any value, or that a value is unknown. It is the default value for uninitialized variables. Like null, it should be checked using the strict equality operator (===) to avoid potential issues with the loose equality operator (==).
+
+In summary, while null is explicitly assigned by developers, undefined is the default state for variables that haven't been initialized or have an unknown value. Both should be checked with the strict equality operator for accurate comparisons.
+
+___
+
+
+**What JS frameworks am I familiar with?**
+
+I am familiar with React/MERN and I've also recently began to teach myself Next.js. Since recent trends in the industry indicate that clients who seek web application services are increasingly benefiting from more than just the SPAs that React is known for, Next.js seems to be a new popular framework that leverages the power of React in a more cohesive way.
+
+
+___
+
+**What are IIFE? Why might we use them?**
+
+* IIFE stands for **Immediately Invoked Function Expression**. It's a JS function that's defined and executed immediately after created.
+
+* IIFE allows you to create a private scope for your variables. Those defined inside the IIFE aren't accessible from outside. Because of this, you can use IIFE to prevent naming conflicts with other scripts/libraries
+
+* It's often used as a basis for creating modular code, allowing you to organize your code into self-contained modules
+
+EX.
+
+// Without IIFE (global variable)
+var globalVar = "I am global";
+
+// With IIFE (no global variable)
+(function() {
+  var localVar = "I am local";
+  console.log(globalVar); // Accessible
+})();
+
+console.log(localVar); // Error! localVar is not defined
+
+___
 
 What is a .gitignore file? What big folder usually goes into it?
+
+* A .gitignore file is used to specify files and directories that Git should ignore during version control. One commonly ignored directory is node_modules, which typically contains a large number of files related to Node.js dependencies. Using a .gitignore file helps keep repositories clean and avoids unnecessary inclusion of files that are generated or not essential for version control.
