@@ -7,15 +7,6 @@ created: 1702409300121
 ---
 **#13: What's the difference between a `relative`, `fixed`, `absolute`, and `static`-ally positioned element?**
 
-**1st Blind Answer**:
-* `relative` : will be positioned relatively to it's parent element.
-
-* `fixed` : will be positioned in a fixed manner, and it's actual position can be manipulated using properties like `top`, `bottom`, `left`, `right`.
-
-* `absolute` : ...
-
-* `static` : ...
-
 **Correct Answer**:
 
 Helpful demonstration:

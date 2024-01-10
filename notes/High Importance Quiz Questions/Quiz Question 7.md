@@ -31,3 +31,22 @@ A value in column `b` will override values in columns `c` and `d`, no matter wha
 In cases of equal specificity: the latest rule is the one that counts. If you have written the same rule into your stylesheet (regardless of internal or external) twice, then the lower rule in your stylesheet is closer to the element to be styled. It is deemed to be more specific and therefore will be applied.
 
 It's a better practice to write CSS rules with low specificity, so that they can be easily overridden if necessary. When writing CSS UI component library code, it's important that they have low specificities so that users of the library can override them without using too complicated CSS rules just for the sake of increasing specificity or resorting to `!important`.
+
+A note on pseudo-class selectors and pseudo-element selectors:
+
+Pseudo-Class Selector:
+
+*   A pseudo-class is used to select and style elements based on their state or position in the document tree.
+    * It is denoted by a colon (:) followed by the name of the pseudo-class.
+    * Examples of pseudo-classes include :hover, :focus, :first-child, :nth-child(), etc.
+    * Pseudo-classes target specific states or characteristics of elements and are often used to add styles for user interactions or document structure.
+Example - a:hover { color: red; }
+
+Pseudo-Element Selector:
+    * A pseudo-element is used to style a specific part of an element, creating virtual elements or parts of elements that don't exist in the HTML document.
+    * It is denoted by a double colon (::) followed by the name of the pseudo-element.
+    * Examples of pseudo-elements include ::before, ::after, ::first-line, ::first-letter, etc.
+    * Pseudo-elements allow you to style parts of elements that are not explicitly present in the HTML, like adding content before or after an element.
+Example - p::first-line {
+  font-weight: bold;
+}
