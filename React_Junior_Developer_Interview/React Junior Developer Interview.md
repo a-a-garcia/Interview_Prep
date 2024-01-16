@@ -2,7 +2,7 @@
 id: dyqnmzshdl378000u25dk7o
 title: React Junior Developer Interview
 desc: ""
-updated: 1705288010269
+updated: 1705430316404
 created: 1705280600088
 ---
 
@@ -151,6 +151,7 @@ setStateCount(stateCount + 1);
 };
 
 return (
+
 <div>
 <h2>Counter</h2>
 <p>Stateful Count: {stateCount}</p>
@@ -233,3 +234,11 @@ Interviewer: "it goes through your app like a user would"
 "Theres also unit testing, tests each individual component - not very common."
 
 ---
+
+What are the React dev tools, and what can you use them for?
+
+"There is a dev tool for chrome extension"
+
+"Use it to see the component tree - in bug testing you can see if there are any errors or weird behavior and use the dev tools to traceback the component tree"
+
+Interviewer: "one word - Performance! if something's not performing as you expect it to or as fast as you expect, take a look at dev tools look at all components look at how long it takes for each component to render, look at how many times each component is rendering - see the reasons why each component is rendering. Use them to validate your changes."
