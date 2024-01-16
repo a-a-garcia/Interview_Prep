@@ -1,0 +1,189 @@
+Intro:
+*Arrays hold values of the same type, at contiguous memory locations
+
+*In JS, array size is dynamic by default
+
+___
+
+Advantages :
+
+1) Store multiple elements, of the same type, with 1 single variable name.
+
+2) Accessing elements is fast as long as you have the index, as opposed to linked lists where you have to traverse from the head.
+
+Disadvantages :
+
+1) Addition + removal of elements into/from the middle of the array is SLOW because remaining elements need to be shifted to accommodate the new/missing element. An exception to this is if the position to be inserted/removed is at the end of the array (shift() and unshift()).
+
+2) For certain languages where array size is fixed, it cannot alter its size after initialization. If insertion causes the total # of elements to exceed the size, a new array has to be allocated and the existing elements have to be copied over. The act of creating a new array and transferring elements over takes O(n) time.
+
+___
+
+Common Terms
+
+* Subarray - A range of continuous values within an array.
+    EX. given an array [2, 3, 6, 1, 5, 4], [3, 6, 1] is a subarray. [3, 1, 5] is NOT.
+
+* Subsequence - A sequence that can be derived from the given sequence by deleting some or no elements, without changing the order of the remaining elements.
+    EX. given an array [2, 3, 6, 1, 5, 4], [3, 1, 5] is a subsequence. [3, 5, 1] is NOT. (if you remove the 6, you can get the subsequence [3, 1, 5])
+
+___
+
+Time Complexities
+
+Access - O(1)
+
+Insert/remove from beg or end - O(1)
+
+Search (sorted array) - O(log(n))
+
+Lookup - O(n)
+
+Insert/Remove anywhere except beg or end - O(n)
+
+___
+
+Things to look out during interviews
+
+1) Clarify if there are duplicate values in the array. Would the presence of duplicate values affect the answer? Does it make the question simpler or harder?
+
+    Ex. 1: 
+    
+    Consider you were asked to return the max value from this array - arr = [4,2,7,4,1,9,9]
+
+    There are duplicate 9's. If you don't want to include duplicates you can use something like a Set which automatically filters duplicates and just returns the first unique one.
+
+    return Math.max(...arr)
+    vs.
+    return Math.max(...new Set(arr))
+
+
+2) When using an index to iterate through array elements, be careful not to go out of bounds.
+
+    Ex. 
+    let arr = [1, 2, 3, 4, 5];
+
+    // Incorrect way (may result in an error or unexpected behavior)
+    for (let i = 0; i <= arr.length; i++) {
+        console.log(arr[i]);
+    }
+
+    // Correct way
+    for (let i = 0; i < arr.length; i++) {
+        console.log(arr[i]);
+    }
+
+3) Be mindful about slicing or concatenating arrays. Typically, slicing and concatenating takes O(n). Use start and end indices to demarcate a subarray/range where possible.
+
+    Ex.
+    //Slicing
+    let arr = [1, 2, 3, 4, 5];
+
+    //INEFFICIENT: Slice() - O(n)
+    let subArray1 = arr.slice(1, 4);
+
+    //More efficient: Use start and end indices - O(endIndex).. O(1)
+    let startIndex = 1;
+    let endIndex = 4;
+    let subArray2 = arr.slice(startIndex, endIdx) 
+
+    ___
+
+    //Concatenating arrays
+    let arr2 = [1, 2, 3];
+    let arr3 = [4, 5, 6];
+
+    //Inefficient: Concatenating arrays directly - takes O(arr2.length + arr3.length)
+    let concatenatedArray1 = arr.concat(arr2)
+
+    //More efficient: spread operator + indices - also O(arr2.length + arr3.length)
+    let concatenatedArray2 = [...arr.slice(), arr2.slice()];
+
+    //Same O(n). performance difference might be neglible for especially for small arrays. the choice between them often depends on use case and readability
+    //readability is better with.concat
+    //if your data is immutable or you want to avoid modifying original arrays, use .slice+spread operator
+
+___
+
+Corner cases
+
+1) Empty sequence
+    Iterating over an Empty Array:
+
+    javascript
+    Copy code
+    let emptyArray = [];
+
+    for (let i = 0; i < emptyArray.length; i++) {
+        // This loop won't execute for an empty array
+    }
+    When iterating over an array, ensure that the loop condition checks the length to avoid unnecessary iterations for an empty array.
+
+    Accessing Elements:
+
+    javascript
+    Copy code
+    let emptyArray = [];
+
+    // Avoid trying to access elements in an empty array
+    let firstElement = emptyArray[0];  // This may result in 'undefined'
+    When accessing elements, ensure that the array is not empty to avoid accessing non-existent elements.
+
+    Array Methods:
+
+    javascript
+    Copy code
+    let emptyArray = [];
+
+    // Using array methods on an empty array
+    let newArray = emptyArray.map(item => item * 2);  // Results in an empty array
+    Be aware that array methods like map, filter, or reduce will produce an empty array if applied to an empty array.
+
+    Checking for Empty Array:
+
+    javascript
+    Copy code
+    let emptyArray = [];
+
+    // Check if the array is empty
+    if (emptyArray.length === 0) {
+        // Handle the case of an empty array
+    }
+    Use the length property to check if an array is empty before performing operations on it.
+
+2) Sequence with 1 or 2 elements.
+
+3) Sequence with repeated eleemnts.
+
+4) Duplicated values
+
+___
+
+Techniques - find relevant problems here 
+https://www.techinterviewhandbook.org/algorithms/array/
+
+* Keep in mind you can treat strings as array problems.
+
+* Sliding Window
+    - Two pointers usually move in the same direction will never overtake each other.
+    - Ensure that each value is only visted at most twice and the time complex is still O(n)
+
+* Two pointers
+    - A more general version of sliding window, where the pointers can cross each other and can be on different arrays.
+    - when you're given two arrays to process, it's common to have one index per array (pointer) to traverse/compare the both of them, incrementing one of the pointers when relevant. 
+
+* Traversing from the right
+    - Sometimes, you can traverse the array starting from the right instead of conventionally from the left.
+
+ * Sorting the array
+    - Is the array sorted? Partially sorted? If it is, some form of binary search should be possible. Usually means the interviewer is looking for a solution that's faster than O(n).
+    - Can you sort the array? Sometimes, sorting the array can significantly simplify the problem. (Obviously, this would not work if the order of the array elements needs to be preserved.)
+
+* Precomputation
+    - For questions where summation, or multiplication of a subarray is involved, pre-computation using hashing, or a prefix/suffix sum/product might be useful.
+
+* Index as a hash key.
+    - If you're given a sequence, and the interviewer asks for O(1) space, it might be possible to use the array itself as a hash table. For EX. if the array only have values from 1 to N (N being the length of the array), negate the value at that index (-1) to indicate presence of that number.
+
+* Traversing the array more than once
+    - Traversing the array multiple times, as long as it's fewer than n times, is still O(n).
