@@ -3,6 +3,7 @@
 //JS QUESTIONS
 
 // JS HOISTING
+
 // you can call a function before it's defined. JS engine moves the function definition to the top at runtime
 doStuff()
 
